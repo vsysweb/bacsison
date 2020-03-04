@@ -12,7 +12,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://vsyswebteam.github.io/LeafNodes/leaf.css" />
+    <link rel="stylesheet" type="text/css" href="https://vsyswebteam.github.io/LeafNodes/leaf.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
@@ -70,35 +70,8 @@
 </div>
 
 <script>
-	/******************************** Phần cấu hình ******************/
-    
-    var subID = "wandaa252b26d38421a"; //Mã của OP, truy cập địa chỉ ip của OP ở 8080 sẽ thấy mã, mỗi OP có 1 mã riêng
-
-    /****************************************************************/
-    /***************** Không nên sửa phần bên dưới ******************/
-    var socket = io('https://wanda.vnapps.com', {secure: true});
-    socket.on('connect', function () {
-        socket.emit('subID', subID);
-        socket.on('subStatus', function (d) {
-            console.log(d);
-        });
-        socket.on('setvar', function (d) {
-            console.log(d);
-            if (d.indexOf(',') !== 0) {
-                var changepar = d.split(/,/);
-                $("#" + changepar[0]).text(changepar[1]);
-            }
-        });
-        socket.on('connection_limited',function(d){
-        	 $("#_msg").text("Quá số lượng kết nối, vui lòng tải lại trình duyệt để cập nhật mới thông tin.");
-        });
-        socket.on('loadvar', function (d) {
-        	 console.log(d);
-            for (var key in d) {
-                $("#" + key).text(d[key]);
-            }
-        });
-    });
+	 var subID = "wandaa252b26d38421a"; //Mã của OP, truy cập địa chỉ ip của OP ở 8080 sẽ thấy mã, mỗi OP có 1 mã riêng
 </script>
+ <script src="https://vsyswebteam.github.io/LeafNodes/leaf.js"></script>
 </body>
 </html>
